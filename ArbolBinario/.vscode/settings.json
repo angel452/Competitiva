@@ -4,6 +4,7 @@
         "deque": "cpp",
         "vector": "cpp",
         "xstring": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "iostream": "cpp"
     }
 }

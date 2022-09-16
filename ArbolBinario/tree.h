@@ -41,6 +41,7 @@ void printNodesV1(TreeNode *head, int n)
     printNodesV1(head->left, n+1);
 }
 
+
 void printNodesV2(TreeNode *head, int n)
 {
     //cout << "Entra funcion" << endl;
@@ -62,6 +63,7 @@ void printNodesV2(TreeNode *head, int n)
 
     printNodesV2(head->right, n-1);
 }
+
 
 void contarProfundidad(TreeNode *head) //falta
 {
@@ -86,6 +88,7 @@ void nodeToVector(TreeNode *head, vector<int> &vec1)
     }
 }
 
+
 void printH1Aux(vector<int> vec1, int n, int printPerRow)
 {
     if(n < 1)
@@ -100,14 +103,29 @@ void printH1Aux(vector<int> vec1, int n, int printPerRow)
 
     aux = aux/2;
     aux2 = aux;
-    cout << vec1[aux] << "  "; //vec[7]
+
+    // -------------- Para el espaciado -------------------
+    //cout << vec1[aux] << "  "; 
+    for (int i = 0; i < aux; i++)
+    {
+        cout << "  "; 
+    }
+    cout << vec1[aux];
+    // ----------------------------------------------------
 
     for(int i = 0; i < pow(2,printPerRow)-1; i++ )
     {
         aux2 = aux2 + ((aux*2)+2);
         if(aux2 < vec1.size())
         {
-            cout << vec1[aux2] << "  ";
+            // -------------- Para el espaciado -------------------
+            //cout << vec1[aux2] << "  ";
+            for (int i = 0; i < ((aux*2)+2)-1; i++)
+            {
+                cout << "  "; 
+            }
+            cout << vec1[aux2];
+            // ----------------------------------------------------
         }
     }
     cout << endl;
@@ -133,11 +151,12 @@ void printNodesH1(TreeNode *head)
 
 }
 
+
 void printH2Aux(vector<int> vec1, int n, int printPerRow)
 {
     if(n == 4) //+1 de la profundidad
     {
-        cout << "fin" << endl;
+        //cout << "fin" << endl;
         return;
     }
 
@@ -148,14 +167,29 @@ void printH2Aux(vector<int> vec1, int n, int printPerRow)
 
     //aux = aux*2;
     aux2 = aux;
-    cout << vec1[aux] << "  "; //vec[7]
+
+    // -------------- Para el espaciado -------------------
+    //cout << vec1[aux] << "  "; 
+    for (int i = 0; i < aux; i++)
+    {
+        cout << "  "; 
+    }
+    cout << vec1[aux];
+    // ----------------------------------------------------
 
     for(int i = 0; i < pow(2,printPerRow)-1; i++ )
     {
         aux2 = aux2 + ((aux*2)+2);
         if(aux2 < vec1.size())
         {
-            cout << vec1[aux2] << "  ";
+            // -------------- Para el espaciado -------------------
+            //cout << vec1[aux2] << "  ";
+            for (int i = 0; i < ((aux*2)+2)-1; i++)
+            {
+                cout << "  "; 
+            }
+            cout << vec1[aux2];
+            // ----------------------------------------------------
         }
     }
     cout << endl;
