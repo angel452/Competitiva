@@ -7,7 +7,6 @@ struct Nodo
     int pos;
     Nodo *anterior;
     Nodo *siguiente;
-    
 };
 
 void mostrarDatos(Nodo *lista) //muestra los datos de derecha a izquierda e izquierda a derecha

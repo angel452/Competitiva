@@ -1,37 +1,44 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <map>
 using namespace std;
-
-int modulo(int a, int b)
-{
-    int r = a - ((a/b)*b);
-    cout << "r: " << r << endl;    
-    if (r < 0)
-    {
-        while(r<0){
-            r += b;
-        }
-        return r;
-    }
-    cout << "r despues: " << r << endl;
-    return r;
-}
 
 int main()
 {
-    long long n;
-    cin >> n;
+    map<int,int> mp[10];
 
-    long long aux = n%998244353;
-    //int aux = -5%3;
+    mp[0][0] = 5;
+    mp[0][1] = 4;
+    mp[0][2] = 3;
+    mp[0][3] = 2;
+    mp[1][4] = 1;
 
-    long long aux2 = -10980687883%998244353;
-    cout << "Prueba: " << aux2 << endl;
+    map<int,int>::iterator i;
+    for(i = mp[0].begin(); i != mp[0].end(); i++)
+    {
+        cout << i->first  << " -> " << i->second << endl;
+    }
 
-    long long aux3 = 150994942-9982443534;
-    cout << "Prueba2: " << aux3 << endl;
-    long long aux4 = aux2%998244353;
-    cout << "Prueba2: " << aux4 << endl;
+    vector<int> adj[5];
+    for(int i=0; i<5; i++)
+    {
+		int m = 0;
+		int k = 1;
+		adj[m].push_back(k);
+		adj[k].push_back(m);
+		mp[m][k]=i+1;
+		mp[k][m]=i+1;
+	}
 
-    cout << "Respuesta: " << aux;
+    for(int i = 5; i >= 0; i--) if(i != 3)
+    {
+        cout << i << " "; 
+    }
+
+    cout << endl;
+    for(int i=24; i+1; i--)
+    {
+        cout << i << " "; 
+    }
+
 }
