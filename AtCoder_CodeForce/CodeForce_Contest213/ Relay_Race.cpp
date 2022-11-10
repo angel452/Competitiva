@@ -84,7 +84,7 @@ int main()
                                       dp[i-1][j  ][k-1],
                                       dp[i-1][j  ][k  ]       );
                 
-                //son los punteros que permiten moverme y hacer sumas?
+                //son los punteros que permiten moverme y hacer sumas
                 int ca = i + 1 - j;
                 int cb = i + 1 - k;
                 //cout << "-------------------------" << endl;
@@ -106,7 +106,6 @@ int main()
                 if( cnt == 2 && j == k ) // FILTRO: VERIFICA SI ESTAMOS EN EL MISMO CUADRADO Y RESTA EL EXCESO
                 {
                     dp[i][j][k] -= a[j][ca];
-                    //cout << "filtro" << endl;
                 }
 
             }
