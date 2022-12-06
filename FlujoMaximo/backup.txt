@@ -1,0 +1,42 @@
+\subsection{APLICACIONES:}
+\begin{itemize}
+    \item Algoritmo de flujo máximo
+    \item Transferencia de paquetes en la capa de transporte en la red informática
+    \item Control de flujo de tráfico en carreteras
+\end{itemize}
+
+
+\hfill
+\subsection{Algoritmo Pseudo-Código}
+\begin{verbatim}
+
+inputs
+    C[n x n] : Capacity Matrix
+    E[n x n] : Adjacency Matrix
+    s : source
+    t : sink
+output
+    f : maximum flow
+Edmonds-Karp:
+    f = 0                // Flow is initially 0
+    F = [n x n]       // residual capacity array
+    while true:
+        m, P = Breadth-First-Search(C, E, s, t, F)
+        if m = 0:
+            break
+        f = f + m
+        v = t
+        while v != s:
+            u = P[v]
+            F[u, v] = F[u, v] - m       
+            //This is reducing the residual capacity of the augmenting path
+            F[v, u] = F[v, u] + m        
+            //This is increasing the residual capacity of the reverse edges 
+            v = u
+    return f
+\end{verbatim}
+En este pseudocódigo, el flujo es inicialmente cero y la matriz de capacidad residual inicial es todo ceros. Luego, el ciclo externo se ejecuta hasta que no haya más rutas desde la fuente hasta el sumidero en el gráfico residual (el número de estos ciclos se muestra en la sección a continuación).
+
+Dentro de este ciclo, estamos realizando una búsqueda en amplitud(BFS) para encontrar la ruta más corta desde la fuente hasta el sumidero que tenga capacidad disponible. Este pequeño cambio a BFS es bastante fácil porque estamos usando la matriz de capacidad residual F que básicamente nos dice si hay capacidad disponible en un borde determinado.
+
+Una vez que hemos encontrado un camino con capacidad residual, m, agregamos esa capacidad a nuestro flujo máximo actual. Luego, el código retrocede a través de la red, comenzando con el sumidero t. A medida que retrocede, encuentra el padre del vértice actual que se define como u. Luego, el código actualiza la matriz de flujo residual F para reflejar la capacidad m de la ruta de aumento recién encontrada. Luego, v se configura para que sea el padre, y el ciclo interno se repite hasta que alcanza el vértice de origen.
